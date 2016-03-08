@@ -289,6 +289,78 @@ ERGEBNIS
         </div>
 
         <div class="step">
+            <h2>CVMA Beispieldaten (fiktiv)</h2>
+<pre style="margin-left: -1.3em;"><code class="xml">
+&lt;collection&gt;
+  &lt;resource&gt;
+      &lt;image&gt;
+        &lt;column name=&quot;dc_identifier&quot;&gt;2622&lt;/column&gt;
+        &lt;column name=&quot;dc_title&quot;&gt;Hl. Michael als Drachentöter&lt;/column&gt;
+        &lt;column name=&quot;cvma_age_determination_start&quot;&gt;1210-01-01&lt;/column&gt;
+        &lt;column name=&quot;cvma_iconclass_notation&quot;&gt;11G31&lt;/column&gt;
+        &lt;column name=&quot;cvma_iconclass_description&quot;&gt;der Erzengel Michael [...]&lt;/column&gt;
+        &lt;column name=&quot;geo&quot;&gt;49.49710000000000,11.38981111111100&lt;/column&gt;
+        &lt;column name=&quot;iptc4xmpext_province_state&quot;&gt;Bayern&lt;/column&gt;
+        &lt;column name=&quot;iptc4xmpext_city&quot;&gt;Henfenfeld&lt;/column&gt;
+        &lt;column name=&quot;iptc4xmpext_sublocation&quot;&gt;Pfarrkirche&lt;/column&gt;
+        &lt;column name=&quot;link&quot;&gt;http://id.corpusvitrearum.de/images/2622&lt;/column&gt;
+      &lt;/image&gt;
+  &lt;/resource&gt;
+&lt;/collection&gt;
+</code></pre>
+        </div>
+
+        <div class="step">
+            <h2>CVMA - Stufe 01</h2>
+            <p>CIDOC und SKOS Klassen, dcterms</p>
+            <img src="svg/cvma_01.svg" alt="Extraktionsergebnis der Stufe 1" />
+            <p class="small">
+                <a href="xtriples/cvma_iconclass.xml">XTriples Konfiguration</a> | 
+                <a href="svg/cvma_01.svg">SVG</a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2>CVMA - Stufe 02</h2>
+            <p>Verbindung zu Iconclass</p>
+            <img src="svg/cvma_02.svg" alt="Extraktionsergebnis der Stufe 2" />
+            <p class="small">
+                <a href="xtriples/cvma_iconclass.xml">XTriples Konfiguration</a> |
+                <a href="svg/cvma_02.svg">SVG</a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2>CVMA - Stufe 03</h2>
+            <p>Ikonographisch ähnliche Ressourcen via Europeana</p>
+            <img src="svg/cvma_03.svg" alt="Extraktionsergebnis der Stufe 3" style="width: 100%;" />
+            <p class="small">
+                <a href="xtriples/cvma_iconclass.xml">XTriples Konfiguration</a> |
+                <a href="svg/cvma_03.svg">SVG</a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2>CVMA - Stufe 04</h2>
+            <p>Multilinguale ikonographische Labels via Iconclass</p>
+            <img src="svg/cvma_04.svg" alt="Extraktionsergebnis der Stufe 4" style="width: 100%;" />
+            <p class="small">
+                <a href="xtriples/cvma_iconclass.xml">XTriples Konfiguration</a> |
+                <a href="svg/cvma_04.svg">SVG</a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2>CVMA - Stufe 05</h2>
+            <p>Voll ausgebaute Modellierung mit CIDOC</p>
+            <img src="svg/cvma_05.svg" alt="Extraktionsergebnis der Stufe 5" style="width: 115%;" />
+            <p class="small">
+                <a href="xtriples/cvma_iconclass.xml">XTriples Konfiguration</a> |
+                <a href="svg/cvma_05.svg">SVG</a>
+            </p>
+        </div>
+
+        <div class="step">
 
             <h2>Goethe: Wer schreibt wem? (SVG)</h2>
 
@@ -396,17 +468,41 @@ ERGEBNIS
                 </g>
             </svg></p>
 
-            <p><a href="http://xtriples.spatialhumanities.de/extract.xql?configuration=http://xtriples.spatialhumanities.de/examples/dh/correspSearchPersons.xml&amp;format=svg" title="Zur Visualisierung von Wer schreibt Wem">Visualisierung aufrufen</a></p>
+            <p class="small">
+                <a href="xtriples/correspSearch_goethe.xml">XTriples Konfiguration</a>
+            </p>
         </div>
 
         <div class="step">
-
-            <h2>Kartenvisualisierung</h2>
-
-            <p><img src="img/map.png" alt="Kartenvisualisierung" title="Visualisierung von Korrespondenznetzwerken"></p>
-
-            <p><a href="viz/map.html" title="Zur Kartenvisualisierung">Visualisierung aufrufen</a></p>
+            <h2>Korrespondenznetzwerke</h2>
+            <p>
+                <a href="viz/map.html" title="Zur Kartenvisualisierung">
+                    <img src="img/map.png" alt="Kartenvisualisierung" title="Visualisierung von Korrespondenznetzwerken"><br/>
+                    Kartenvisualisierung aufrufen
+                </a>
+            </p>
         </div>
+
+        <div class="step">
+            <h2>Familienbeziehungen auf dem jüdischen Friedhof Ahaus</h2>
+            <p>
+                <a href="http://dhd2016.digitale-akademie.de/workshop/tools/sgvizler/graph_aha-family-relations.html" title="Zur Visualisierung">
+                    <img src="img/sgvizler.png" alt="Graphvisualisierung" title="Visualisierung von Familienbeziehungen"><br/>
+                    Graph-Visualisierung aufrufen
+                </a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2>Jüdische Grabsteinsymbole pro Friedhof</h2>
+            <p>
+                <a href="http://dhd2016.digitale-akademie.de/workshop/tools/d3sparql/sunburst_symbole-orte.html" title="Zur Visualisierung">
+                    <img src="img/d3sparql.png" alt="Sunburst-Visualsierung" title="Visualisierung von Grabsteinsymbolen"><br/>
+                    Sunburst-Visualisierung aufrufen
+                </a>
+            </p>
+        </div>
+
         <div class="step">
 
             <h2 class="centered">F I N I S</h2>

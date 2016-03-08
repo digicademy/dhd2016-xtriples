@@ -156,11 +156,6 @@
             </statement>
         </triples>
     </configuration>
-	<!-- Weber -->
-	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118629662"> -->
-	<!-- Goethe -->
-	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118540238"> -->
-	<!-- All -->
     <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=all">
         <!-- correspondence resources -->
         <resource uri="{//tei:correspDesc}"/>
