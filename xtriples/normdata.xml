@@ -1,0 +1,111 @@
+<?xml-model uri="http://xtriples.spatialhumanities.de/xtriples.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<xtriples>
+    <configuration>
+        <vocabularies>
+            <vocabulary prefix="cc" uri="http://creativecommons.org/ns#"/>
+            <vocabulary prefix="cd" uri="http://correspsearch.bbaw.de/ontology/0.1/correspDesc#"/>
+            <vocabulary prefix="cs" uri="http://www.bbaw.de/telota/correspSearch"/>
+            <vocabulary prefix="dcterms" uri="http://purl.org/dc/terms/"/>
+            <vocabulary prefix="foaf" uri="http://xmlns.com/foaf/0.1/"/>
+            <vocabulary prefix="geo" uri="http://www.w3.org/2003/01/geo/wgs84_pos#"/>
+            <vocabulary prefix="gn" uri="http://www.geonames.org/ontology#"/>
+            <vocabulary prefix="gndo" uri="http://d-nb.info/standards/elementset/gnd#"/>
+            <vocabulary prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
+            <vocabulary prefix="owltime" uri="http://www.w3.org/2006/time#"/>
+            <vocabulary prefix="place" uri="http://purl.org/ontology/places#"/>
+            <vocabulary prefix="rel" uri="http://purl.org/vocab/relationship/"/>
+            <vocabulary prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+            <vocabulary prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
+            <vocabulary prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
+        </vocabularies>
+        <triples>
+            <!-- DNB -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="gndo">DifferentiatedPerson</object>
+            </statement>
+            <!-- authoritative name of person -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">/normalize-space(.//gndo:preferredNameEntityForThePerson)</object>
+            </statement>
+            <!-- further semantic resources -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="owl">sameAs</predicate>
+                <object type="uri">//owl:sameAs/@rdf:resource</object>
+            </statement>
+            <!-- profession or occupation -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="gndo">professionOrOccupation</predicate>
+                <object type="uri">//gndo:professionOrOccupation/rdf:Description/@rdf:about</object>
+            </statement>
+            <statement repeat="15">
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:professionOrOccupation[1]/rdf:Description/@rdf:about))</condition>
+                <subject type="uri">//gndo:professionOrOccupation[$repeatIndex]/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="gndo">SubjectHeading</object>
+            </statement>
+            <statement repeat="15">
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:professionOrOccupation[1]/rdf:Description/@rdf:about))</condition>
+                <subject type="uri">//gndo:professionOrOccupation[$repeatIndex]/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gndo:professionOrOccupation[$repeatIndex]/rdf:Description/gndo:preferredNameForTheSubjectHeading</object>
+            </statement>
+            <!-- familial relationships -->
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="gndo">familialRelationship</predicate>
+                <object type="uri">//gndo:familialRelationship/rdf:Description/@rdf:about</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject>//gndo:familialRelationship/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="foaf">Person</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject>//gndo:familialRelationship/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="gndo">DifferentiatedPerson</object>
+            </statement>
+            <statement repeat="15">
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject>//gndo:familialRelationship[$repeatIndex]/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gndo:familialRelationship[$repeatIndex]/rdf:Description/gndo:preferredNameForThePerson</object>
+            </statement>
+            <!-- gender -->
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:gender))</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="foaf">gender</predicate>
+                <object type="literal" lang="en">/substring-after(.//gndo:gender/@rdf:resource, 'http://d-nb.info/standards/vocab/gnd/Gender#')</object>
+            </statement>
+        </triples>
+    </configuration>
+	<!-- Weber -->
+	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118629662"> -->
+	<!-- Goethe -->
+	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118540238"> -->
+	<!-- All -->
+    <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=all">
+        <!-- GND resources -->
+        <resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://d-nb')]/@ref)}/about/lds"/>
+    	<!-- VIAF resources
+    	<resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://viaf')]/@ref)}"/> -->
+    	<!-- LCCN resources 
+    	<resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://lccn')]/@ref)}"/>-->
+    	<!-- BNF resources 
+    	<resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://catalogue')]/@ref)}"/>-->
+    </collection>
+</xtriples>

@@ -1,0 +1,243 @@
+{
+  "head" : {
+    "vars" : [ "WKT", "name" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.2791 49.98419,8.22778 49.96167))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.57893 49.94782,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.68417 50.11552,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.32903 50.9803,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.2791 49.98419,13.41053 52.52437))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.2791 49.98419,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.5899 50.92878,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.68417 50.11552,8.2791 49.98419))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.68417 50.11552,14.24641 40.85631))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.07752 49.45421,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.32903 50.9803,8.2791 49.98419))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.2791 49.98419,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((9.93228 51.53443,8.2791 49.98419))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.32903 50.9803,11.07752 49.45421))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.2791 49.98419,10.01534 53.57532))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.08047 52.62264,10.41409 53.2509))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((9.73322 52.37052,12.37129 51.33962))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.60751 54.14054,10.60751 54.14054))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.32903 50.9803,11.34046 50.72043))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.32903 50.9803,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.34046 50.72043,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((4.13333 51.83333,8.2791 49.98419))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((4.13333 51.83333,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.60751 54.14054,16.37208 48.20849))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((13.04399 47.79941,10.73184 50.42553))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.60751 54.14054,13.41053 52.52437))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((1.28437 51.94194,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((16.37208 48.20849,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.60751 54.14054,10.68729 53.86893))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((13.04399 47.79941,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.01534 53.57532,10.52673 52.26594))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.01534 53.57532,16.37208 48.20849))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.68417 50.11552,8.20965 48.85851))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.01534 53.57532,10.68729 53.86893))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((10.01534 53.57532,10.01534 53.57532))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((13.04399 47.79941,12.37129 51.33962))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.40444 49.00937,11.07752 49.45421))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.68417 50.11552,9.73322 52.37052))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.57549 48.13743,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.57893 49.94782,11.32903 50.9803))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((2.3488 48.85341,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.57549 48.13743,12.37129 51.33962))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.27716 50.28357,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.55 47.36667,13.04399 47.79941))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.55 47.36667,14.28611 48.30639))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((11.6875 50.01086,8.68417 50.11552))"
+      }
+    }, {
+      "WKT" : {
+        "type" : "literal",
+        "value" : "POLYGON((8.68417 50.11552,9.93228 51.53443))"
+      }
+    } ]
+  }
+}

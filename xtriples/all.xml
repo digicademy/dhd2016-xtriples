@@ -1,0 +1,312 @@
+<?xml-model uri="http://xtriples.spatialhumanities.de/xtriples.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<xtriples>
+    <configuration>
+        <vocabularies>
+            <vocabulary prefix="cc" uri="http://creativecommons.org/ns#"/>
+            <vocabulary prefix="cd" uri="http://correspsearch.bbaw.de/ontology/0.1/correspDesc#"/>
+            <vocabulary prefix="dcterms" uri="http://purl.org/dc/terms/"/>
+            <vocabulary prefix="foaf" uri="http://xmlns.com/foaf/0.1/"/>
+            <vocabulary prefix="geo" uri="http://www.w3.org/2003/01/geo/wgs84_pos#"/>
+            <vocabulary prefix="gn" uri="http://www.geonames.org/ontology#"/>
+            <vocabulary prefix="gndo" uri="http://d-nb.info/standards/elementset/gnd#"/>
+            <vocabulary prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
+            <vocabulary prefix="owltime" uri="http://www.w3.org/2006/time#"/>
+            <vocabulary prefix="place" uri="http://purl.org/ontology/places#"/>
+            <vocabulary prefix="rel" uri="http://purl.org/vocab/relationship/"/>
+            <vocabulary prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+            <vocabulary prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
+            <vocabulary prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
+        </vocabularies>
+        <triples>
+
+			<!-- a letter -->
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>/@ref</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="cd">Letter</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="cd">Letter</object>
+            </statement>
+
+        	<!-- letter as temporal entity -->
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>/@ref</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="owltime">TemporalEntity</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="owltime">TemporalEntity</object>
+            </statement>
+
+        	<!-- when -->
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>/@ref</subject>
+                <predicate prefix="owltime">xsdDateTime</predicate>
+                <object type="literal">//tei:date/@when</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</subject>
+                <predicate prefix="owltime">xsdDateTime</predicate>
+                <object type="literal">//tei:date/@when</object>
+            </statement>
+
+        	<!-- notBefore -->
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>/@ref</subject>
+                <predicate prefix="owltime">after</predicate>
+                <object type="literal">//tei:date/@notBefore</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</subject>
+                <predicate prefix="owltime">after</predicate>
+                <object type="literal">//tei:date/@notBefore</object>
+            </statement>
+
+        	<!-- notAfter -->
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>/@ref</subject>
+                <predicate prefix="owltime">before</predicate>
+                <object type="literal">//tei:date/@notAfter</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</subject>
+                <predicate prefix="owltime">before</predicate>
+                <object type="literal">//tei:date/@notAfter</object>
+            </statement>
+
+        	<!-- sentFrom -->
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>/@ref</subject>
+                <predicate prefix="cd">sentFrom</predicate>
+                <object type="uri">//tei:correspAction[@type='sent']/tei:placeName/@ref</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</subject>
+                <predicate prefix="cd">sentFrom</predicate>
+                <object type="uri">//tei:correspAction[@type='sent']/tei:placeName/@ref</object>
+            </statement>
+
+        	<!-- sentTo -->
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>/@ref</subject>
+                <predicate prefix="cd">sentTo</predicate>
+                <object type="uri">//tei:correspAction[@type='received']/tei:placeName/@ref</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</subject>
+                <predicate prefix="cd">sentTo</predicate>
+                <object type="uri">//tei:correspAction[@type='received']/tei:placeName/@ref</object>
+            </statement>
+
+			<!-- sender of a letter -->
+            <statement>
+                <subject>//tei:correspAction[@type='sent']/tei:persName/@ref</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="cd" type="uri">Sender</object>
+            </statement>
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>//tei:correspAction[@type='sent']/tei:persName/@ref</subject>
+                <predicate prefix="cd">sending</predicate>
+                <object type="uri">/@ref</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject>//tei:correspAction[@type='sent']/tei:persName/@ref</subject>
+                <predicate prefix="cd">sending</predicate>
+                <object type="uri" prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</object>
+            </statement>
+
+        	<!-- recipient of a letter -->
+            <statement>
+                <subject>//tei:correspAction[@type='received']/tei:persName/@ref</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="cd" type="uri">Recipient</object>
+            </statement>
+            <statement>
+                <condition>/exists(@ref)</condition>
+                <subject>//tei:correspAction[@type='received']/tei:persName/@ref</subject>
+                <predicate prefix="cd">receiving</predicate>
+                <object type="uri">/@ref</object>
+            </statement>
+            <statement>
+                <condition>/exists(@key)</condition>
+                <subject>//tei:correspAction[@type='received']/tei:persName/@ref</subject>
+                <predicate prefix="cd">receiving</predicate>
+                <object type="uri" prepend="http://correspsearch.bbaw.de/id/{/substring-after(@cs:source, '#')}/">/@key</object>
+            </statement>
+
+            <!-- DNB -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="gndo">DifferentiatedPerson</object>
+            </statement>
+            <!-- authoritative name of person -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">/normalize-space(.//gndo:preferredNameEntityForThePerson)</object>
+            </statement>
+            <!-- further semantic resources -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="owl">sameAs</predicate>
+                <object type="uri">//owl:sameAs/@rdf:resource</object>
+            </statement>
+            <!-- profession or occupation -->
+            <statement>
+                <condition>/exists(.//gndo:gndIdentifier)</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="gndo">professionOrOccupation</predicate>
+                <object type="uri">//gndo:professionOrOccupation/rdf:Description/@rdf:about</object>
+            </statement>
+            <statement repeat="15">
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:professionOrOccupation[1]/rdf:Description/@rdf:about))</condition>
+                <subject type="uri">//gndo:professionOrOccupation[$repeatIndex]/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="gndo">SubjectHeading</object>
+            </statement>
+            <statement repeat="15">
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:professionOrOccupation[1]/rdf:Description/@rdf:about))</condition>
+                <subject type="uri">//gndo:professionOrOccupation[$repeatIndex]/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gndo:professionOrOccupation[$repeatIndex]/rdf:Description/gndo:preferredNameForTheSubjectHeading</object>
+            </statement>
+            <!-- familial relationships -->
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="gndo">familialRelationship</predicate>
+                <object type="uri">//gndo:familialRelationship/rdf:Description/@rdf:about</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject>//gndo:familialRelationship/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="foaf">Person</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject>//gndo:familialRelationship/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="gndo">DifferentiatedPerson</object>
+            </statement>
+            <statement repeat="15">
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:familialRelationship))</condition>
+                <subject>//gndo:familialRelationship[$repeatIndex]/rdf:Description/@rdf:about</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gndo:familialRelationship[$repeatIndex]/rdf:Description/gndo:preferredNameForThePerson</object>
+            </statement>
+            <!-- gender -->
+            <statement>
+                <condition>/(exists(.//gndo:gndIdentifier) and exists(.//gndo:gender))</condition>
+                <subject prepend="http://d-nb.info/gnd/">//gndo:gndIdentifier</subject>
+                <predicate prefix="foaf">gender</predicate>
+                <object type="literal" lang="en">/substring-after(.//gndo:gender/@rdf:resource, 'http://d-nb.info/standards/vocab/gnd/Gender#')</object>
+            </statement>
+
+            <!-- Geonames -->
+            <!-- type place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="place">City</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="geo">SpatialThing</object>
+            </statement>
+            <!-- further geographic resources -->
+            <statement>
+                <condition>/(exists(.//gn:Feature) and exists(.//rdfs:seeAlso))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">seeAlso</predicate>
+                <object type="uri">//rdfs:seeAlso/@rdf:resource</object>
+            </statement>
+            <!-- authoritative name of the place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature) and exists(.//gn:officialName[@xml:lang='de']))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gn:officialName[@xml:lang='de']</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature) and not(.//gn:officialName[@xml:lang='de']) and exists(.//gn:alternateName[@xml:lang='de']))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gn:alternateName[@xml:lang='de']</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature) and not(.//gn:alternateName[@xml:lang='de']) and not(.//gn:officialName[@xml:lang='de']))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal">//gn:name</object>
+            </statement>
+            <!-- country of the place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="gn">countryCode</predicate>
+                <object type="literal">//gn:countryCode</object>
+            </statement>
+            <!-- coordinates of the place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="geo">lat</predicate>
+                <object type="literal" datatype="float">//geo:lat</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="geo">long</predicate>
+                <object type="literal" datatype="float">//geo:long</object>
+            </statement>
+        </triples>
+    </configuration>
+	<!-- Weber -->
+	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118629662"> -->
+	<!-- Goethe -->
+	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118540238"> -->
+	<!-- All -->
+    <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=all" max="10">
+        <!-- correspondence resources -->
+        <resource uri="{//tei:correspDesc}"/>
+        <!-- geonames resources -->
+        <resource uri="{/distinct-values(.//tei:placeName/@ref)}/about.rdf"/>
+    	<!-- GND resources -->
+        <resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://d-nb')]/@ref)}/about/lds"/>
+    	<!-- VIAF resources
+    	<resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://viaf')]/@ref)}"/> -->
+    	<!-- LCCN resources 
+    	<resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://lccn')]/@ref)}"/>-->
+    	<!-- BNF resources 
+    	<resource uri="{/distinct-values(.//tei:persName[starts-with(@ref, 'http://catalogue')]/@ref)}"/>-->
+    </collection>
+</xtriples>

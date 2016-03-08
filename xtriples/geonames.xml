@@ -1,0 +1,93 @@
+<?xml-model uri="http://xtriples.spatialhumanities.de/xtriples.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<xtriples>
+    <configuration>
+        <vocabularies>
+            <vocabulary prefix="cc" uri="http://creativecommons.org/ns#"/>
+            <vocabulary prefix="cd" uri="http://correspsearch.bbaw.de/ontology/0.1/correspDesc#"/>
+            <vocabulary prefix="cs" uri="http://www.bbaw.de/telota/correspSearch"/>
+            <vocabulary prefix="dcterms" uri="http://purl.org/dc/terms/"/>
+            <vocabulary prefix="foaf" uri="http://xmlns.com/foaf/0.1/"/>
+            <vocabulary prefix="geo" uri="http://www.w3.org/2003/01/geo/wgs84_pos#"/>
+            <vocabulary prefix="gn" uri="http://www.geonames.org/ontology#"/>
+            <vocabulary prefix="gndo" uri="http://d-nb.info/standards/elementset/gnd#"/>
+            <vocabulary prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
+            <vocabulary prefix="owltime" uri="http://www.w3.org/2006/time#"/>
+            <vocabulary prefix="place" uri="http://purl.org/ontology/places#"/>
+            <vocabulary prefix="rel" uri="http://purl.org/vocab/relationship/"/>
+            <vocabulary prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+            <vocabulary prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
+            <vocabulary prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
+        </vocabularies>
+        <triples>
+            <!-- Geonames -->
+        	<!-- type place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="place">City</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object type="uri" prefix="geo">SpatialThing</object>
+            </statement>
+        	<!-- further geographic resources -->
+            <statement>
+                <condition>/(exists(.//gn:Feature) and exists(.//rdfs:seeAlso))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">seeAlso</predicate>
+                <object type="uri">//rdfs:seeAlso/@rdf:resource</object>
+            </statement>
+        	<!-- authoritative name of the place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature) and exists(.//gn:officialName[@xml:lang='de']))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gn:officialName[@xml:lang='de']</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature) and not(.//gn:officialName[@xml:lang='de']) and exists(.//gn:alternateName[@xml:lang='de']))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal" lang="de">//gn:alternateName[@xml:lang='de']</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature) and not(.//gn:alternateName[@xml:lang='de']) and not(.//gn:officialName[@xml:lang='de']))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="rdfs">label</predicate>
+                <object type="literal">//gn:name</object>
+            </statement>
+        	<!-- country of the place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="gn">countryCode</predicate>
+                <object type="literal">//gn:countryCode</object>
+            </statement>
+        	<!-- coordinates of the place -->
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="geo">lat</predicate>
+                <object type="literal" datatype="float">//geo:lat</object>
+            </statement>
+            <statement>
+                <condition>/(exists(.//gn:Feature))</condition>
+                <subject prepend="http://www.geonames.org/">//gn:Feature/substring-before(substring-after(@rdf:about, 'http://sws.geonames.org/'), '/')</subject>
+                <predicate prefix="geo">long</predicate>
+                <object type="literal" datatype="float">//geo:long</object>
+            </statement>
+        </triples>
+    </configuration>
+	<!-- Weber -->
+	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118629662"> -->
+	<!-- Goethe -->
+	<!-- <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=http://d-nb.info/gnd/118540238"> -->
+	<!-- All -->
+    <collection uri="http://correspsearch.bbaw.de/api/v1/tei-xml.xql?correspondent=all">
+        <!-- geonames resources -->
+        <resource uri="{/distinct-values(.//tei:placeName/@ref)}/about.rdf"/>
+    </collection>
+</xtriples>

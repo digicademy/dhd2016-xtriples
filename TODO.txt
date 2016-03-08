@@ -1,0 +1,21 @@
+<form>
+	<textarea class="code" name="code" id="code3">
+
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+
+PREFIX owltime: &lt;http://www.w3.org/2006/time#&gt;
+
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX rel: &lt;http://purl.org/vocab/relationship/&gt;
+
+PREFIX geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;
+PREFIX gn: &lt;http://www.geonames.org/ontology#&gt;
+
+PREFIX gndo: &lt;http://d-nb.info/standards/elementset/gnd#&gt;
+
+PREFIX cd: &lt;http://www.tei-c.org/ns/1.0/correspDesc#&gt;
+
+	</textarea>
+</form>

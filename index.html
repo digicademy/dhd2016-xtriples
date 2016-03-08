@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geisteswissenschaftliche Fachdatenrepositorien im Semantic Web. Modellierung, Vernetzung, Visualisierung</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    <meta name="author" content="Torsten Schrade">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+
+    <!-- code highlighting -->
+    <link href="css/highlight.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- theme stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- jquery -->
+    <script type="text/javascript" src="js/jquery.1.8.min.js"></script>
+
+    <!-- greuler -->
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/cola.v3.js"></script>
+    <script src="js/greuler.min.js"></script>
+
+    <!-- codemirror for sparql -->
+    <link rel="stylesheet" href="css/codemirror.css" />
+    <link rel="stylesheet" href="css/sparqlcolors.css" />
+    <script src="js/codemirror.js"></script>
+    <script src="js/matchbrackets.js"></script>
+    <script src="js/sparql.js"></script>
+</head>
+
+<body>
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+    <div id="impress">
+
+        <div class="step">
+            <h4>DHd2016 | Leipzig</h4>
+
+            <h1>Geisteswissenschaftliche Fachdatenrepositorien im Semantic Web</h1>
+
+            <h2>Modellierung, Vernetzung, Visualisierung</h2>
+
+            <h3 style="margin-top: 1em;">
+                <strong>Torsten Schrade (Mainz) |
+                    <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Twitter_bird_logo_2012.svg" alt="Twitter" width="30" />
+                    <a href="https://twitter.com/digicademy" title="Die Digitale Akademie aut Twitter">@digicademy</a> |
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="Twitter" width="30" />
+                    <a href="https://github.com/digicademy/dhd2016-xtriples" title="Präsentation und Daten auf GitHub">GitHub</a>
+                </strong>
+            </h3>
+        </div>
+
+        <div class="step">
+            <h2>Gliederung</h2>
+
+            <ol>
+                <li>Geisteswissenschaftliche Repositorien</li>
+                <li>Semantische Fragestellungen</li>
+                <li>Implizite und explizite Semantik (XML vs. RDF)</li>
+                <li>Beispielmodellierung eines Briefkorpus</li>
+                <li>RDF aus XML: Der XTriples Webservice</li>
+                <li>Vernetzungs- und Visualisierungsbeispiele</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h2>Geisteswissenschaftliche Repositorien</h2>
+        </div>
+
+        <div class="step">
+            <h2 class="skip">Corpus Vitrearum Medii Aevi</h2>
+            <p class="centered">
+                <a href="http://corpusvitrearum.de">
+                     <img src="img/screenshots_cvma_01.png" alt="Screenshot" title="Startseite des CVMA">
+                </a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2 class="skip">Corpus Vitrearum Medii Aevi</h2>
+            <p class="centered">
+                <a href="http://id.corpusvitrearum.de/images/2622">
+                    <img src="img/screenshots_cvma_02.png" alt="Screenshot" title="Detailansicht">
+                </a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2 class="skip">correspSearch</h2>
+            <p class="centered">
+                <a href="http://correspsearch.bbaw.de/">
+                    <img src="img/screenshots_correspsearch_01.png" alt="Screenshot" title="Startseite von correspSearch"><br/>
+                    http://correspsearch.bbaw.de/
+                </a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2 class="skip">correspSearch</h2>
+            <p class="centered">
+                <a href="http://correspsearch.bbaw.de/">
+                    <img src="img/screenshots_correspsearch_02.png" alt="Screenshot" title="Schnittstelle von correspSearch"><br/>
+                    http://correspsearch.bbaw.de/index.xql?id=api&l=de
+                </a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2 class="skip">Epidat</h2>
+            <p class="centered">
+                <a href="http://www.steinheim-institut.de/cgi-bin/epidat">
+                    <img src="img/screenshots_epidat_01.png" alt="Screenshot" title="Epidat Ansicht eines Grabstein-Datensatzes"><br/>
+                    http://www.steinheim-institut.de/cgi-bin/epidat
+                </a>
+            </p>
+        </div>
+
+        <div class="step">
+            <h2>Semantische Fragestellungen</h2>
+            <ul>
+                <li><strong>CVMA:</strong>
+                    <ul>
+                        <li>Welche ikonographisch ähnlichen Ressourcen gibt es?</li>
+                        <li>Treten bestimmte Ikonographien nur zu bestimmten Zeiten auf?</li>
+                    </ul>
+                </li>
+                <li><strong>Briefeditionen:</strong>
+                    <ul>
+                        <li>Wer korrespondiert mit wem?</li>
+                        <li>Wo war Person X im Jahr Y?</li>
+                    </ul>
+                </li>
+                <li><strong>Epidat:</strong>
+                    <ul>
+                        <li>Welche Familienbeziehungen lassen sich auf einem Friedhof nachweisen?</li>
+                        <li>Gibt es Muster im Auftreten bestimmter Grabsteinsymbole auf bestimmten Friedhöfen?</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>Implizite und explizite Semantik</h2>
+        </div>
+
+        <div class="step">
+            <h2>Implizite Semantik (TEI-XML)</h2>
+
+<pre>
+<code class="xml">
+    &lt;<span class="object-background">correspDesc</span> key="686" <span class="subject-background">cs:source="#SOE20"</span>&gt;
+        &lt;correspAction <span class="predicate-background">type="sent"</span>&gt;
+            &lt;<span class="object-background">persName</span> <span class="subject-background">ref="http://d-nb.info/gnd/118540238"</span>&gt;
+                Johann Wolfgang von Goethe
+            &lt;/persName&gt;
+            &lt;<span class="object-background">placeName</span> <span class="subject-background">ref="http://www.geonames.org/2812482"</span>&gt;
+                Weimar
+            &lt;/placeName&gt;
+            &lt;<span class="predicate-background">date</span> <span class="object-background">when="1793-12-05"</span>&gt;5.12.1793&lt;/date&gt;
+        &lt;/correspAction&gt;
+            [...]
+    &lt;/correspDesc&gt;
+</code>
+</pre>
+
+            <ul class="legend">
+                <li class="subject">Subjekt</li>
+                <li class="predicate">Prädikat</li>
+                <li class="object">Objekt</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>Explizite Semantik (RDF)</h2>
+
+<pre>
+<code class="xml">
+    <span class="subject-color">Goethe</span>           <span class="predicate-color">is a</span>              <span class="object-color">Person</span> ;
+                     <span class="predicate-color">sends</span>             <span class="object-color">Letter</span> .
+
+    <span class="subject-color">Letter</span>           <span class="predicate-color">dates to</span>          <span class="object-color">1793</span> ;
+                     <span class="predicate-color">sent from</span>         <span class="object-color">Weimar</span> .
+
+    <span class="subject-color">Weimar</span>           <span class="predicate-color">is a</span>              <span class="object-color">City</span> ;
+                     <span class="predicate-color">has latitude</span>      <span class="object-color">11.32</span> ;
+                     <span class="predicate-color">has longitude</span>     <span class="object-color">50.98</span> .
+</code>
+</pre>
+
+            <ul class="legend">
+                <li class="subject">Subjekt</li>
+                <li class="predicate">Prädikat</li>
+                <li class="object">Object</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>Beispielmodellierung eines Briefkorpus</h2>
+        </div>
+
+        <div class="step">
+
+            <h2>Schritte zur Modellierung</h2>
+
+            <ol class="steps">
+                <li><a href="#/step-2/#step1" id="step1">1</a></li>
+                <li><a href="#/step-2/#step2" id="step2">2</a></li>
+                <li><a href="#/step-2/#step3" id="step3">3</a></li>
+                <li><a href="#/step-2/#step4" id="step4">4</a></li>
+                <li><a href="#/step-2/#step5" id="step5">5</a></li>
+                <li><a href="#/step-2/#step6" id="step6">6</a></li>
+                <li><a href="#/step-2/#step7" id="step7">7</a></li>
+            </ol>
+
+            <ul class="legend">
+                <li id="cs">correspSearch</li>
+                <li id="gnd">GND</li>
+                <li id="geonames">Geonames</li>
+            </ul>
+
+            <div id="model"></div>
+
+            <script src="js/model.js" type="text/javascript"></script>
+        </div>
+
+        <div class="step">
+            <h2>RDF aus XML: Der XTriples Webservice</h2>
+        </div>
+
+        <div class="step">
+            <h2 class="skip">Website und Dokumentation</h2>
+
+            <p class="centered">
+                <a href="http://xtriples.spatialhumanities.de" title="Zur Website des Webservices">
+                    <img src="img/xtriples.png" alt="Screenshot" title="Startseite von XTriples"><br/>
+                    http://xtriples.spatialhumanities.de
+                </a>
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <h2>Ziele des Webservice</h2>
+
+            <ol>
+                <li>Gewinnung von RDF Statements aus beliebigem XML</li>
+                <li>Basierend auf einer einfachen Konfiguration</li>
+                <li>Einbeziehung beliebiger weiterer Ressourcen und Sammlungen</li>
+                <li>Zahlreiche RDF-Serialisierungen als Rückgabeformate</li>
+                <li>RESTful - Kommunikation vollständig über HTTP</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h2>Funktionsweise</h2>
+
+            <p><img src="img/structure.png" alt="Grafik zur Funktionsweise" title="Funktionsweise des Webservice"></p>
+        </div>
+
+        <div class="step">
+            <h2>Extraktion von Aussagemustern</h2>
+<pre style="margin-left: -1.3em;"><code class="xml">
+AUSSAGEMUSTER
+
+&lt;statement&gt;
+    &lt;subject&gt;<span class="subject-background">//tei:correspAction[@type='sent']/tei:persName/@ref</span>&lt;/subject&gt;
+    &lt;predicate prefix="rdf"&gt;<span class="predicate-background">type</span>&lt;/predicate&gt;
+    &lt;object type="uri" prefix="cd"&gt;<span class="object-background">Sender</span>&lt;/object&gt;
+&lt;/statement&gt;
+________________________________________________________________________
+
+ERGEBNIS
+
+<span class="subject-color">gndo:118540238</span>   <span class="predicate-color">rdf:type</span>   <span class="object-color">cd:Sender</span> .
+</code></pre>
+        </div>
+
+        <div class="step">
+            <h2>Vernetzungs- und Visualisierungsbeispiele</h2>
+        </div>
+
+        <div class="step">
+
+            <h2>Goethe: Wer schreibt wem? (SVG)</h2>
+
+            <p><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="800pt" height="256pt" viewBox="0.00 0.00 914.00 256.00">
+                <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
+                    <title>d1e200</title>
+                    <polygon style="fill:white;stroke:white;" points="-4,4 -4,-252 910,-252 910,4 -4,4"/>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/118805193">http://d&amp;#45;nb.info/gnd/118805193</a> --&gt;
+                    <g id="node1" class="node">
+                        <title><a href="http://d-nb.info/gnd/118805193">http://d-nb.info/gnd/118805193</a></title>
+                        <a xlink:href="http://d-nb.info/gnd/118805193" xlink:title="foaf:Person:\nSoemmerring, Samuel Thomas">
+                            <polygon style="fill:none;stroke:black;" points="210,-248 44,-248 44,-214 210,-214 210,-248"/>
+                            <text text-anchor="middle" x="127" y="-235" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">foaf:Person:</text>
+                            <text text-anchor="middle" x="127" y="-222" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">Soemmerring, Samuel Thomas</text>
+                        </a>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/118540238">http://d&amp;#45;nb.info/gnd/118540238</a> --&gt;
+                    <g id="node3" class="node">
+                        <title><a href="http://d-nb.info/gnd/118540238">http://d-nb.info/gnd/118540238</a></title>
+                        <a xlink:href="http://d-nb.info/gnd/118540238" xlink:title="foaf:Person:\nGoethe, Johann Wolfgang von, Johann Wolfgang von Goethe">
+                            <polygon style="fill:none;stroke:black;" points="680,-172 382,-172 382,-138 680,-138 680,-172"/>
+                            <text text-anchor="middle" x="531" y="-159" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">foaf:Person:</text>
+                            <text text-anchor="middle" x="531" y="-146" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">Goethe, Johann Wolfgang von, Johann Wolfgang von Goethe</text>
+                        </a>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/118805193&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238">http://d&amp;#45;nb.info/gnd/118805193&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238</a> --&gt;
+                    <g id="edge2" class="edge">
+                        <title><a href="http://d-nb.info/gnd/118805193-&amp;gt;http://d-nb.info/gnd/118540238">http://d-nb.info/gnd/118805193-&amp;gt;http://d-nb.info/gnd/118540238</a></title>
+                        <path style="fill:none;stroke:blue;" d="M210,-228C258,-225 318,-220 371,-209 408,-201 448,-187 479,-176"/>
+                        <polygon style="fill:blue;stroke:blue;" points="481.015,-178.964 489,-172 478.415,-172.464 481.015,-178.964"/>
+                        <text text-anchor="middle" x="318" y="-226.5" style="font-family:Times New Roman;font-size:10.00px;">cd:sending</text>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/118540238&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118805193">http://d&amp;#45;nb.info/gnd/118540238&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118805193</a> --&gt;
+                    <g id="edge12" class="edge">
+                        <title><a href="http://d-nb.info/gnd/118540238-&amp;gt;http://d-nb.info/gnd/118805193">http://d-nb.info/gnd/118540238-&amp;gt;http://d-nb.info/gnd/118805193</a></title>
+                        <path style="fill:none;stroke:blue;" d="M382,-172C343,-177 303,-184 265,-192 240,-197 214,-204 191,-211"/>
+                        <polygon style="fill:blue;stroke:blue;" points="189.573,-207.774 181,-214 191.584,-214.479 189.573,-207.774"/>
+                        <text text-anchor="middle" x="318" y="-195.5" style="font-family:Times New Roman;font-size:10.00px;">cd:sending</text>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/122361261">http://d&amp;#45;nb.info/gnd/122361261</a> --&gt;
+                    <g id="node8" class="node">
+                        <title><a href="http://d-nb.info/gnd/122361261">http://d-nb.info/gnd/122361261</a></title>
+                        <a xlink:href="http://d-nb.info/gnd/122361261" xlink:title="foaf:Person:\nWeber, Genovefa">
+                            <polygon style="fill:none;stroke:black;" points="905,-172 809,-172 809,-138 905,-138 905,-172"/>
+                            <text text-anchor="middle" x="857" y="-159" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">foaf:Person:</text>
+                            <text text-anchor="middle" x="857" y="-146" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">Weber, Genovefa</text>
+                        </a>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/118540238&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/122361261">http://d&amp;#45;nb.info/gnd/118540238&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/122361261</a> --&gt;
+                    <g id="edge10" class="edge">
+                        <title><a href="http://d-nb.info/gnd/118540238-&amp;gt;http://d-nb.info/gnd/122361261">http://d-nb.info/gnd/118540238-&amp;gt;http://d-nb.info/gnd/122361261</a></title>
+                        <path style="fill:none;stroke:blue;" d="M680,-155C722,-155 765,-155 798,-155"/>
+                        <polygon style="fill:blue;stroke:blue;" points="798,-158.5 808,-155 798,-151.5 798,-158.5"/>
+                        <text text-anchor="middle" x="744" y="-158.5" style="font-family:Times New Roman;font-size:10.00px;">cd:sending</text>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/115363688">http://d&amp;#45;nb.info/gnd/115363688</a> --&gt;
+                    <g id="node4" class="node">
+                        <title><a href="http://d-nb.info/gnd/115363688">http://d-nb.info/gnd/115363688</a></title>
+                        <a xlink:href="http://d-nb.info/gnd/115363688" xlink:title="foaf:Person:\nLuise Augusta Herzogin von Sachsen-Weimar und\nEisenach">
+                            <polygon style="fill:none;stroke:black;" points="253,-183.5 1,-183.5 1,-136.5 253,-136.5 253,-183.5"/>
+                            <text text-anchor="middle" x="127" y="-170.5" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">foaf:Person:</text>
+                            <text text-anchor="middle" x="127" y="-157.5" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">Luise Augusta Herzogin von Sachsen-Weimar und</text>
+                            <text text-anchor="middle" x="127" y="-144.5" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">Eisenach</text>
+                        </a>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/115363688&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238">http://d&amp;#45;nb.info/gnd/115363688&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238</a> --&gt;
+                    <g id="edge4" class="edge">
+                        <title><a href="http://d-nb.info/gnd/115363688-&amp;gt;http://d-nb.info/gnd/118540238">http://d-nb.info/gnd/115363688-&amp;gt;http://d-nb.info/gnd/118540238</a></title>
+                        <path style="fill:none;stroke:blue;" d="M254,-155C258,-155 261,-155 265,-155 300,-154 337,-154 372,-154"/>
+                        <polygon style="fill:blue;stroke:blue;" points="372,-157.5 382,-154 372,-150.5 372,-157.5"/>
+                        <text text-anchor="middle" x="318" y="-158.5" style="font-family:Times New Roman;font-size:10.00px;">cd:sending</text>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/117158542">http://d&amp;#45;nb.info/gnd/117158542</a> --&gt;
+                    <g id="node6" class="node">
+                        <title><a href="http://d-nb.info/gnd/117158542">http://d-nb.info/gnd/117158542</a></title>
+                        <a xlink:href="http://d-nb.info/gnd/117158542" xlink:title="foaf:Person:\nWeber, Franz Anton">
+                            <polygon style="fill:none;stroke:black;" points="181,-115 73,-115 73,-81 181,-81 181,-115"/>
+                            <text text-anchor="middle" x="127" y="-102" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">foaf:Person:</text>
+                            <text text-anchor="middle" x="127" y="-89" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">Weber, Franz Anton</text>
+                        </a>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/117158542&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238">http://d&amp;#45;nb.info/gnd/117158542&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238</a> --&gt;
+                    <g id="edge6" class="edge">
+                        <title><a href="http://d-nb.info/gnd/117158542-&amp;gt;http://d-nb.info/gnd/118540238">http://d-nb.info/gnd/117158542-&amp;gt;http://d-nb.info/gnd/118540238</a></title>
+                        <path style="fill:none;stroke:blue;" d="M181,-106C237,-114 326,-126 400,-137"/>
+                        <polygon style="fill:blue;stroke:blue;" points="399.701,-140.488 410,-138 400.398,-133.522 399.701,-140.488"/>
+                        <text text-anchor="middle" x="318" y="-133.5" style="font-family:Times New Roman;font-size:10.00px;">cd:sending</text>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/118540246">http://d&amp;#45;nb.info/gnd/118540246</a> --&gt;
+                    <g id="node9" class="node">
+                        <title><a href="http://d-nb.info/gnd/118540246">http://d-nb.info/gnd/118540246</a></title>
+                        <a xlink:href="http://d-nb.info/gnd/118540246" xlink:title="foaf:Person:\nGoethe, Katharina Elisabeth">
+                            <polygon style="fill:none;stroke:black;" points="202,-59 52,-59 52,-25 202,-25 202,-59"/>
+                            <text text-anchor="middle" x="127" y="-46" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">foaf:Person:</text>
+                            <text text-anchor="middle" x="127" y="-33" style="font-family:Times New Roman;font-size:10.00px;fill:blue;">Goethe, Katharina Elisabeth</text>
+                        </a>
+                    </g>
+                    &lt;!-- <a href="http://d&amp;#45;nb.info/gnd/118540246&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238">http://d&amp;#45;nb.info/gnd/118540246&amp;#45;&amp;gt;http://d&amp;#45;nb.info/gnd/118540238</a> --&gt;
+                    <g id="edge8" class="edge">
+                        <title><a href="http://d-nb.info/gnd/118540246-&amp;gt;http://d-nb.info/gnd/118540238">http://d-nb.info/gnd/118540246-&amp;gt;http://d-nb.info/gnd/118540238</a></title>
+                        <path style="fill:none;stroke:blue;" d="M202,-58C219,-62 237,-66 254,-70 307,-82 320,-83 371,-99 407,-109 446,-123 477,-134"/>
+                        <polygon style="fill:blue;stroke:blue;" points="476.415,-137.536 487,-138 479.015,-131.036 476.415,-137.536"/>
+                        <text text-anchor="middle" x="318" y="-102.5" style="font-family:Times New Roman;font-size:10.00px;">cd:sending</text>
+                    </g>
+                </g>
+            </svg></p>
+
+            <p><a href="http://xtriples.spatialhumanities.de/extract.xql?configuration=http://xtriples.spatialhumanities.de/examples/dh/correspSearchPersons.xml&amp;format=svg" title="Zur Visualisierung von Wer schreibt Wem">Visualisierung aufrufen</a></p>
+        </div>
+
+        <div class="step">
+
+            <h2>Kartenvisualisierung</h2>
+
+            <p><img src="img/map.png" alt="Kartenvisualisierung" title="Visualisierung von Korrespondenznetzwerken"></p>
+
+            <p><a href="viz/map.html" title="Zur Kartenvisualisierung">Visualisierung aufrufen</a></p>
+        </div>
+        <div class="step">
+
+            <h2 class="centered">F I N I S</h2>
+
+<pre style="width: 25em; margin: 0 auto;"><code class="xml">
+    <span class="subject-color">Publikum</span>         <span class="predicate-color">war</span>            <span class="object-color">aufmerksam</span> .
+    <span class="subject-color">Referent</span>         <span class="predicate-color">dankt</span>          <span class="object-color">Publikum</span> .
+</code></pre>
+        </div>
+        <div class="step">
+
+            <h2>Stuff used</h2>
+
+            <ul>
+                <li><a href="https://github.com/impress/impress.js">Impress.js</a> (Präsentation)</li>
+                <li><a href="https://github.com/ktym/d3sparql">D3SPARQL</a> (Visualisierungstool für RDF)</li>
+                <li><a href="http://mgskjaeveland.github.io/sgvizler/">Sgvizler</a> (Visualisierungstool für RDF)</li>
+                <li><a href="http://maurizzzio.github.io/greuler/#/">greuler</a> (Graph Modellierung/Visualisierung)</li>
+                <li><a href="https://highlightjs.org/">hightlight.js</a> (Syntax Highlighting)</li>
+                <li><a href="https://codemirror.net/">CodeMirror</a> (SPARQL Syntax Highlighting)</li>
+            </ul>
+
+            <p>Präsentation &amp; Daten: <a href="https://github.com/digicademy/dhd2016-xtriples">GitHub</a></p>
+
+            <p>
+                Lizenz: <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>, Torsten Schrade
+            </p>
+
+        </div>
+    </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+</body>
+</html>
